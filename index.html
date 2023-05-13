@@ -8,7 +8,6 @@
         background-color: lightblue;
         text-align: center;
       }
-      
       .lds-ring {
   display: inline-block;
   position: relative;
@@ -48,33 +47,21 @@
 </head>
 <body>
   <script>
-    //const AS_URL_BASE = "";
-    
-    const AS_URL_BASE = "https://script.google.com/macros/s/AKfycbwKalKbRqKPCGkjRZKBC2URMGRIwS7-E2x1Hn4r4_Y2ljf_BJGEOd_uAhK8ak45P6eO/exec";
-
-const params = new URLSearchParams(window.location.search);
-const k = params.get('k');
-
-if (k) {
-  //fetch(`${AS_URL_BASE}?k=${k}`)
-  fetch(`${AS_URL_BASE}?${params}`)
-    .then(r => r.text())
-    .then((r) => {
-      console.log(r);
-      // document.write(r);
-      if (r) {
-        document.location.replace(r);
-      }
-    })
-    .catch(err => console.log(err));
-}
-   
-  
-  
+    const AS_URL_BASE = "https://script.google.com/macros/s/AKfycbw1blXgAcRGTnSPxRBKtVp-N3AI-Tr6_JCJy-BehHD789LbqLte8FVLoID_OzymD935/exec";
+    const params = new URLSearchParams(window.location.search);
+    if (params.has('k')) {
+      const searchParamsString = params.toString();
+      fetch(`${AS_URL_BASE}?${searchParamsString}`)
+        .then(r => r.text())
+        .then((r) => {
+          console.log(r);
+          if (r) {
+            document.location.replace(r);
+          }
+        })
+        .catch(err => console.log(err));
+    }
   </script>
-  
   <div class="lds-ring"><div></div><div></div><div></div><div></div></div>
-  
-  
 </body>
 </html>
