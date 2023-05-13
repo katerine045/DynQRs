@@ -56,7 +56,8 @@ const params = new URLSearchParams(window.location.search);
 const k = params.get('k');
 
 if (k) {
-  fetch(`${AS_URL_BASE}?k=${k}`)
+  //fetch(`${AS_URL_BASE}?k=${k}`)
+  fetch(`${AS_URL_BASE}?${params}`)
     .then(r => r.text())
     .then((r) => {
       console.log(r);
